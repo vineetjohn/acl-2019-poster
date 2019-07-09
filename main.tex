@@ -167,12 +167,19 @@
 
                     \begin{block}{Model}
 
-                        The VAE \cite{kingma2013auto} reconstruction loss is
-                        \begin{align}%\small
-                            \loss{AE}(\nnweight{E}, \nnweight{D}) = & - \mathbb{E}_{q_{E}(\bm h|\rmx)} [\log p(\rmx|\bm h)]  \nonumber \\ %\nonumber
+                        The \textbf{VAE \cite{kingma2013auto} reconstruction loss} is
+                        \begin{align*}
+                            \loss{AE}(\nnweight{E}, \nnweight{D}) = & - \mathbb{E}_{q_{E}(\bm h|\rmx)} [\log p(\rmx|\bm h)]    \\
                                                                     & + \hyp{kl}\operatorname{KL}(q_{E}(\bm h|\rmx)\|p(\bm h))
-                        \end{align}
+                        \end{align*}
                         where $\hyp{kl}$ is the hyperparameter balancing the reconstruction loss and the KL term. $p(\bm h)$ is the prior, typically the standard normal  $\mathcal{N}(\bm 0,\mathrm I)$. $q_E(\bm h|\mathrm x)$ is the posterior in the form $\mathcal{N}(\bm \mu,\operatorname{diag} \bm\sigma^2)$, where $\bm\mu$ and $\bm\sigma$ are predicted by the encoder.
+
+                        The \textbf{multi-task classifier} loss is given by
+                        \begin{equation*}
+                            \bm y_s = \operatorname{softmax}(\weight{mul(s)} \bm s + \bias{mul(s)})
+                        \end{equation*}
+                        where $\nnweight{mul(s)}=[\weight{mul(s)}; \bias{mul(s)}]$ are the parameters of the style classifier in the setting of multi-task learning, and $\bm y_s$ is the output of softmax layer.
+                        The classifier is trained with cross-entropy loss against the ground-truth distribution.
 
                     \end{block}
 
@@ -186,7 +193,22 @@
                     %	METHODS
                     %----------------------------------------------------------------------------------------
 
-                    \begin{block}{Results}
+                    \begin{block}{Model (contd.)}
+                        We train an \textbf{adversarial classifier}, that deliberately discriminates the style label.
+                        Then, the encoder is trained to encode a content space from which its adversary cannot predict the style.
+                        \begin{equation*}
+                            \bm y_s                          = \operatorname{softmax}(\weight{dis(s)} \bm c + \bias{dis(s)})
+                        \end{equation*}
+                        \begin{equation*}
+                            \loss{dis(s)}(\nnweight{dis(s)}) = - \sum\nolimits_{l\in\text{labels}} t_c(l)\log y_s(l)
+                        \end{equation*}
+                        where $\nnweight{dis(s)}=[\weight{dis(s)}; \bias{dis(s)}]$ are the parameters of the adversary.
+
+                        The style-oriented adversarial objective maximizes
+                        \begin{equation*}
+                            \loss{adv(s)}(\nnweight{E})=\mathcal{H}(\bm y_s|\bm c; \nnweight{dis(s)})
+                        \end{equation*}
+                        where $\bm y_s$ is the predicted distribution over the style labels and $\mathcal{H}(\bm p)=-\sum_{i\in\text{labels}}p_i\log p_i$ is the entropy of the adversary. Here, $\loss{adv(s)}$ is maximized with respect to the encoder $\nnweight{E}$ and we fix $\nnweight{dis(s)}$. The objective attains maximum value when $\bm y_s$ is uniform.
 
                     \end{block}
 
@@ -200,13 +222,13 @@
             %	IMPORTANT RESULT
             %----------------------------------------------------------------------------------------
 
-            \begin{alertblock}{Important Result}
+            % \begin{alertblock}{Important Result}
 
-                We systematically combine multi-task and adversarial objectives to separate content and style from each other, where we also propose to approximate content information with bag-of-words features of style-neutral, non-stopword vocabulary.
-                The disentangled space can be directly applied to text style-transfer tasks.
-                Our method achieves high style-transfer strength, high content-preservation scores, as well as high language fluency, compared with previous work.
+            %     We systematically combine multi-task and adversarial objectives to separate content and style from each other, where we also propose to approximate content information with bag-of-words features of style-neutral, non-stopword vocabulary.
+            %     The disentangled space can be directly applied to text style-transfer tasks.
+            %     Our method achieves high style-transfer strength, high content-preservation scores, as well as high language fluency, compared with previous work.
 
-            \end{alertblock}
+            % \end{alertblock}
 
             %----------------------------------------------------------------------------------------
 
@@ -218,7 +240,7 @@
                     %	MATHEMATICAL SECTION
                     %----------------------------------------------------------------------------------------
 
-                    \begin{block}{Model (contd.)}
+                    \begin{block}{Results}
 
                     \end{block}
 
