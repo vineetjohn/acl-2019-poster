@@ -59,15 +59,17 @@
 \usepackage{booktabs} % Top and bottom rules for tables
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{bm}
+\usepackage{multirow}
+\usepackage{makecell}
 
 
 % bold x for equations
 \newcommand{\rmx}{\mathrm x} 
 % used for table headers
-\newcommand{\tabh}[1]{\multicolumn{1}{c|}{\textbf{#1}}}  
-\newcommand{\tabhr}[1]{\multicolumn{1}{|c||}{\textbf{#1}}}  
+\newcommand{\tabh}[1]{\multicolumn{1}{c}{\textbf{#1}}}  
+\newcommand{\tabhr}[1]{\multicolumn{1}{c}{\textbf{#1}}}  
 % used for the top left cell in a table
-\newcommand{\tabc}[2]{\multicolumn{1}{|c||}{\multirow{#1}{*}{\textbf{#2}}}} 
+\newcommand{\tabc}[2]{\multicolumn{1}{c}{\multirow{#1}{*}{\textbf{#2}}}} 
 % used for denoting the loss symbol with a subscript
 \newcommand{\loss}[1]{J_{\text{#1}}}
 % used for denoting the lambda symbol with a subscript
@@ -257,20 +259,21 @@
                             \caption{Disentangled Latent Spaces - VAE}
                         \end{figure}
 
-                        Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim:
+                        Table~\ref{tab:manual-evaluation} presents the results of human evaluation on selected methods.
 
-                        \begin{table}
-                            \vspace{2ex}
-                            \begin{tabular}{l l l}
-                                \toprule
-                                \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
-                                \midrule
-                                Treatment 1         & 0.0003262           & 0.562               \\
-                                Treatment 2         & 0.0015681           & 0.910               \\
-                                Treatment 3         & 0.0009271           & 0.296               \\
-                                \bottomrule
+                        \begin{table}[ht]
+                            \centering
+                            \begin{tabular}{ l c c c c }
+                                \tabc{1}{Model} & \textbf{TS}       & \textbf{CP}       & \textbf{LQ}       & \textbf{GM}       \\
+                                \hline
+                                Fu (2018)       & \color{gray} 1.67 & \color{gray} 3.84 & \color{gray} 3.66 & \color{gray} 2.86 \\
+                                Shen (2017)     & 3.63              & 3.07              & 3.08              & 3.25              \\
+                                Zhao (2018)     & 3.55              & 3.09              & 3.77              & 3.46              \\
+                                Ours (DAE)      & 3.67              & 3.64              & 4.19              & 3.83              \\
+                                Ours (VAE)      & \textbf{4.32}     & \textbf{3.73}     & \textbf{4.48}     & \textbf{4.16}     \\
                             \end{tabular}
-                            \caption{Table caption}
+                            \caption{Manual evaluation on the Yelp dataset.}
+                            \label{tab:manual-evaluation}
                         \end{table}
 
                     \end{block}
