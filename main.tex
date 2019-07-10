@@ -147,6 +147,7 @@
             \begin{figure}
                 \includegraphics[width=1\linewidth]{model-overview}
                 \caption{Model Training and Inference}
+                \label{fig:model-overview}
             \end{figure}
 
             %----------------------------------------------------------------------------------------
@@ -276,9 +277,9 @@
                         We show t-SNE plots for the VAE in Figure~\ref{fig:tsne-plot}.
                         As seen, sentences with different styles are noticeably separated in a clean manner in the style space, but are indistinguishable in the content space.
                         \begin{figure}
-                            \label{fig:tsne-plot}
                             \includegraphics[width=\linewidth]{vae-latent-spaces}
                             \caption{Disentangled Latent Spaces - VAE}
+                            \label{fig:tsne-plot}
                         \end{figure}
 
                         Table~\ref{tab:human-evaluation} presents the results of human evaluation on selected methods.
@@ -319,18 +320,9 @@
             \begin{block}{Conclusion}
 
                 We systematically combine multi-task and adversarial objectives to separate content and style from each other, where we also propose to approximate content information with bag-of-words features of style-neutral, non-stopword vocabulary.
-                The disentangled space can be directly applied to text style-transfer tasks.
-                Our method achieves high style-transfer strength, high content-preservation scores, as well as high language fluency, compared with previous work.
+                The disentangled space can be directly applied to text style-transfer tasks, and achieve high style-transfer, content-preservation and language fluency, compared with previous work.
 
-            \end{block}
-
-            %----------------------------------------------------------------------------------------
-            %	ADDITIONAL INFORMATION
-            %----------------------------------------------------------------------------------------
-
-            \begin{block}{Future Work}
-
-
+                For future work, our approach can be naturally extended to non-categorical styles, because our style feature is encoded from the input sentence. Non-categorical styles cannot be easily handled by fixed style embeddings \cite{shen2017style} or style-specific decoders~\cite{fu2018style}.
             \end{block}
 
             %----------------------------------------------------------------------------------------
