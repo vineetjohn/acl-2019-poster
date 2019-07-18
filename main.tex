@@ -173,7 +173,7 @@
 
                         The \textbf{multi-task classifier} loss is given by
                         \begin{equation*}
-                            \bm y_s = \operatorname{softmax}(\weight{mul(s)} \bm s + \bias{mul(s)})
+                            \loss{mul(s)}(\nnweight{E};\nnweight{mul(s)}) = - \sum_{l\in\text{labels}} t_s(l)\log y_s(l)
                         \end{equation*}
                         where $\nnweight{mul(s)}=[\weight{mul(s)}; \bias{mul(s)}]$ are the parameters of the style classifier in the setting of multi-task learning, and $\bm y_s$ is the output of softmax layer.
                         The classifier is trained with cross-entropy loss against the ground-truth distribution.
