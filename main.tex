@@ -162,11 +162,7 @@
 
                 \begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
 
-                    %----------------------------------------------------------------------------------------
-                    %	MATERIALS
-                    %----------------------------------------------------------------------------------------
-
-                    \begin{block}{Model}
+                    \begin{block}{Model: Autoencoder \&\\Multi-task Classifier}
 
                         The \textbf{VAE \cite{kingma2013auto} reconstruction loss} is
                         \begin{align*}
@@ -190,11 +186,7 @@
 
                 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
-                    %----------------------------------------------------------------------------------------
-                    %	METHODS
-                    %----------------------------------------------------------------------------------------
-
-                    \begin{block}{Model (contd.)}
+                    \begin{block}{Model: Discriminator \& Adversary}
                         We train an \textbf{adversarial classifier}, that deliberately discriminates the style label.
                         Then, the encoder is trained to encode a content space from which its adversary cannot predict the style.
                         \begin{equation*}
@@ -237,11 +229,7 @@
 
                 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
 
-                    %----------------------------------------------------------------------------------------
-                    %	MATHEMATICAL SECTION
-                    %----------------------------------------------------------------------------------------
-
-                    \begin{block}{Results}
+                    \begin{block}{Results: Automated Evaluation}
                         We see in Table~\ref{tab:comparison-previous} a clear trade-off between style transfer and content preservation, as they are contradictory goals. Especially, a few models have a transfer accuracy lower than 50\%. They are shown in gray, and not the focus of the comparison, because the system cannot achieve the goal of style transfer most of the time.
 
                         Our method achieves high style-transfer accuracy (STA) and outperforms previous methods by more than 7\%.
@@ -273,19 +261,7 @@
 
                 \begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
 
-                    %----------------------------------------------------------------------------------------
-                    %	RESULTS
-                    %----------------------------------------------------------------------------------------
-
-                    \begin{block}{Results (contd.)}
-                        We show t-SNE plots for the VAE in Figure~\ref{fig:tsne-plot}.
-                        As seen, sentences with different styles are noticeably separated in a clean manner in the style space, but are indistinguishable in the content space.
-                        \begin{figure}
-                            \includegraphics[width=\linewidth]{vae-latent-spaces}
-                            \caption{Disentangled Latent Spaces - VAE}
-                            \label{fig:tsne-plot}
-                        \end{figure}
-
+                    \begin{block}{Results: Human Evaluation \&\\Latent Space Visualization}
                         Table~\ref{tab:human-evaluation} presents the results of human evaluation on selected methods.
 
                         \begin{table}[ht]
@@ -302,6 +278,16 @@
                             \caption{Human evaluation on the Yelp dataset.}
                             \label{tab:human-evaluation}
                         \end{table}
+
+                        \vspace{-1.6cm}
+
+                        We show t-SNE plots for the VAE in Figure~\ref{fig:tsne-plot}.
+                        As seen, sentences with different styles are noticeably separated in a clean manner in the style space, but are indistinguishable in the content space.
+                        \begin{figure}
+                            \includegraphics[width=\linewidth]{vae-latent-spaces}
+                            \caption{Disentangled Latent Spaces - VAE}
+                            \label{fig:tsne-plot}
+                        \end{figure}
 
                     \end{block}
 
