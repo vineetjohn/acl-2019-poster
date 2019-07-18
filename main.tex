@@ -189,7 +189,7 @@
                     \begin{block}{Model: Discriminator \& Adversary}
                         We train an \textbf{adversarial classifier}, that deliberately discriminates the style/content label. The below equations deal with style information, and are also applied to content in a BoW context.
 
-                        The encoder is trained to encode a content space from which its adversary cannot predict the style/content.
+                        The encoder encodes a content space from which its adversary cannot predict the style.
 
                         \vspace{-1.6cm}
 
@@ -233,9 +233,11 @@
                 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
 
                     \begin{block}{Results: Automated Evaluation}
-                        We see in Table~\ref{tab:comparison-previous} a clear trade-off between style transfer and content preservation, as they are contradictory goals. Especially, a few models have a transfer accuracy lower than 50\%. They are shown in gray, and not the focus of the comparison, because the system cannot achieve the goal of style transfer most of the time.
+                        We see in Table~\ref{tab:comparison-previous} a clear trade-off between style transfer and content preservation, as they are contradictory goals.
 
-                        Our method achieves high style-transfer accuracy (STA) and outperforms previous methods by more than 7\%.
+                        Our method achieves high style-transfer accuracy (STA) and outperforms previous methods by more than 7\%. Among all the methods that can achieve more than 50\% transfer accuracy, DAE has the highest word overlap (WO) on Yelp; VAE is also high.
+
+                        For language fluency, VAE yields the best PPL in both datasets.
 
                         \begin{table}[ht]
                             \centering
