@@ -232,7 +232,7 @@
 
                 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
 
-                    \begin{block}{Results: Automated Evaluation}
+                    \begin{block}{Automated Evaluation}
                         We see in Table~\ref{tab:comparison-previous} a clear trade-off between style transfer and content preservation, as they are contradictory goals.
 
                         Our method achieves high style-transfer accuracy (STA) and outperforms previous methods by more than 7\%. Among all the methods that can achieve more than 50\% transfer accuracy, DAE has the highest word overlap (WO) on Yelp; VAE is also high.
@@ -266,7 +266,7 @@
 
                 \begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
 
-                    \begin{block}{Results: Human Evaluation \&\\Latent Space Visualization}
+                    \begin{block}{Human Evaluation}
                         Table~\ref{tab:human-evaluation} presents the results of human evaluation on selected methods.
 
                         \begin{table}[ht]
@@ -283,17 +283,17 @@
                             \caption{Human evaluation on the Yelp dataset.}
                             \label{tab:human-evaluation}
                         \end{table}
+                    \end{block}
 
-                        \vspace{-1.6cm}
+                    \vspace{-1.6cm}
 
-                        We show t-SNE plots for the VAE in Figure~\ref{fig:tsne-plot}.
-                        As seen, sentences with different styles are noticeably separated in a clean manner in the style space, but are indistinguishable in the content space.
+                    \begin{block}{Latent Space Visualization}
+                        We show t-SNE plots for the VAE latent spaces in Figure~\ref{fig:tsne-plot}
                         \begin{figure}
                             \includegraphics[width=\linewidth]{vae-latent-spaces}
                             \caption{Disentangled Latent Spaces - VAE}
                             \label{fig:tsne-plot}
                         \end{figure}
-
                     \end{block}
 
                     %----------------------------------------------------------------------------------------
