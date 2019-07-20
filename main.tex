@@ -118,7 +118,7 @@
             \begin{alertblock}{Objectives}
 
                 \begin{itemize}
-                    \item Disentangle the latent representations into style and content 
+                    \item Disentangle the latent representations into style and content
                     \item Use the disentangled space to style transfer generation
                 \end{itemize}
 
@@ -130,39 +130,39 @@
 
             \begin{block}{Introduction}
 
-               \begin{itemize}
-                   \item \textbf{Disentangling Latent Space}
-                                  \begin{itemize}\normalsize
-                  	 \item[] E.g., $\bm h$ = [Sentiment, Subject] (This paper)
-                  	 \item[] E.g., $\bm h$ = [Syntax, Semantics]\\[5pt]
-                  	 
-                  	 {\setlength{\fboxrule}{3pt}
-                 
-                  	     	\fbox{\parbox{\linewidth}{\textbf{Ad: 16:00--17:40 Poster Session 8 \#7}: \small Generating Sentences from Disentangled Syntactic and Semantic Spaces}
-                  	     	}
-                  
-                  	  }
-                  	                \end{itemize} 
-                                  
-                    \bigskip
-                 \item \textbf{Approach: Auxiliary Losses}
-                                   \begin{itemize}\normalsize
-                    \item[] 1) Adversarial loss for style
-                    \item[] 2) Multi-talk loss for style
-                 	\item[] 3) Adversarial loss for content
-                 	\item[] 4) Multi-talk loss for content
-                 	                  	     \end{itemize} 
-                                       \item \textbf{Application: Non-parallel text style transfer}
-                                       
-                                        \bigskip
+                \begin{itemize}
+                    \item \textbf{Disentangling Latent Space}
+                          \begin{itemize}\normalsize
+                              \item[] E.g., $\bm h$ = [Sentiment, Subject] (This paper)
+                              \item[] E.g., $\bm h$ = [Syntax, Semantics]\\[5pt]
 
-                      \begin{itemize}\normalsize
-                      		\item[] \textbf{Style (esp. sentiment) transfer}: 
-                      		``This is very interesting'' $\Rightarrow$`This is very boring''
-                      		\item[] \textbf{Non-parallel}:  Training data do not have parallel pairs
-                      		   \end{itemize} 
-                 \end{itemize} 
-                
+                                    {\setlength{\fboxrule}{3pt}
+
+                                    \fbox{\parbox{\linewidth}{\textbf{Ad: 16:00--17:40 Poster Session 8 \#7}: \small Generating Sentences from Disentangled Syntactic and Semantic Spaces}
+                                    }
+
+                                    }
+                          \end{itemize}
+
+                          \bigskip
+                    \item \textbf{Approach: Auxiliary Losses}
+                          \begin{itemize}\normalsize
+                              \item[] 1) Adversarial loss for style
+                              \item[] 2) Multi-talk loss for style
+                              \item[] 3) Adversarial loss for content
+                              \item[] 4) Multi-talk loss for content
+                          \end{itemize}
+                    \item \textbf{Application: Non-parallel text style transfer}
+
+                          \bigskip
+
+                          \begin{itemize}\normalsize
+                              \item[] \textbf{Style (esp. sentiment) transfer}:
+                                    ``This is very interesting'' $\Rightarrow$`This is very boring''
+                              \item[] \textbf{Non-parallel}:  Training data do not have parallel pairs
+                          \end{itemize}
+                \end{itemize}
+
 
 
             \end{block}
@@ -189,7 +189,7 @@
 
                     \begin{block}{Model: Autoencoder \&\\Multi-task Classifier}
 
-                        The \textbf{VAE \cite{kingma2013auto} reconstruction loss} is
+                        The \textbf{VAE reconstruction loss} is
                         \begin{align*}
                             \loss{AE}(\nnweight{E}, \nnweight{D}) = & - \mathbb{E}_{q_{E}(\bm h|\rmx)} [\log p(\rmx|\bm h)]    \\
                                                                     & + \hyp{kl}\operatorname{KL}(q_{E}(\bm h|\rmx)\|p(\bm h))
@@ -338,18 +338,7 @@
                 We systematically combine multi-task and adversarial objectives to separate content and style from each other, where we also propose to approximate content information with bag-of-words features of style-neutral, non-stopword vocabulary.
                 The disentangled space can be directly applied to text style-transfer tasks, and achieve high style-transfer, content-preservation and language fluency, compared with previous work.
 
-                For future work, our approach can be naturally extended to non-categorical styles, because our style feature is encoded from the input sentence. Non-categorical styles cannot be easily handled by fixed style embeddings \cite{shen2017style} or style-specific decoders~\cite{fu2018style}.
-            \end{block}
-
-            %----------------------------------------------------------------------------------------
-            %	REFERENCES
-            %----------------------------------------------------------------------------------------
-
-            \begin{block}{References}
-
-                \small{\bibliographystyle{unsrt}
-                    \bibliography{sample}\vspace{0.75in}}
-
+                For future work, our approach can be naturally extended to non-categorical styles, because our style feature is encoded from the input sentence. Non-categorical styles cannot be easily handled by fixed style embeddings or style-specific decoders.
             \end{block}
 
             %----------------------------------------------------------------------------------------
